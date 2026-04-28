@@ -1,4 +1,20 @@
-# Miscellaneous
+# Flutter / Dart
+.dart_tool/
+.packages
+build/
+pubspec.lock
+
+# Android
+android/.gradle/
+android/app/build/
+
+# iOS
+ios/Pods/
+ios/.symlinks/
+
+# Misc
+*.log
+*.tmp# Miscellaneous
 *.class
 *.log
 *.pyc
