@@ -22,7 +22,7 @@ class _LoginPageState extends State<LoginPage> {
       return;
     }
 
-    // 👉 Simple fake login (for now)
+
     Navigator.pushReplacementNamed(context, '/');
   }
 

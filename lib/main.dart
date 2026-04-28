@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'LoginPage.dart';
 
 import 'homepage.dart';
-import 'habittracker.dart'; // 👈 make sure this file name matches
+import 'habittracker.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
 
-      // 👇 App starts from login page
+
       initialRoute: '/login',
 
       routes: {

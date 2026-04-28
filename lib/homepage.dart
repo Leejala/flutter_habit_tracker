@@ -43,7 +43,7 @@ class _HomePageState extends State<homePage>
       body: Container(
         width: double.infinity,
 
-        // 💜 Gradient background
+        //  Gradient background
         decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [
@@ -85,7 +85,7 @@ class _HomePageState extends State<homePage>
 
                 const SizedBox(height: 50),
 
-                // 💫 Cute icon
+                //  Cute icon
                 Container(
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
@@ -101,7 +101,7 @@ class _HomePageState extends State<homePage>
 
                 const SizedBox(height: 50),
 
-                // 🚀 Animated Button
+                //  Animated Button
                 GestureDetector(
                   onTap: () {
                     Navigator.pushNamed(context, '/habit');
