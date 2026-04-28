@@ -1,8 +1,8 @@
-📌 Main code is in /lib folder
+
 # habit_tracker
 
 A new Flutter project.
-
+📌 Main code is in /lib folder
 ## Getting Started
 
 This project is a starting point for a Flutter application.
