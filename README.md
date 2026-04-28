@@ -1,3 +1,4 @@
+📌 Main code is in /lib folder
 # habit_tracker
 
 A new Flutter project.
