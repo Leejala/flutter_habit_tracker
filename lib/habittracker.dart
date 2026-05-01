@@ -9,6 +9,7 @@ void main() {
 class habittracker extends StatelessWidget {
   const habittracker({super.key});
 
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -45,17 +46,22 @@ class Habit {
 class HabitPage extends StatefulWidget {
   const HabitPage({super.key});
 
+
   @override
   State<HabitPage> createState() => _HabitPageState();
 }
 
+
 class _HabitPageState extends State<HabitPage> {
   List<Habit> habits = [];
+  List<bool> isDoneList = [];
   final TextEditingController controller = TextEditingController();
 
   @override
   void initState() {
     super.initState();
+    isDoneList = List.generate(habits.length, (index) => false);
+
     loadHabits();
   }
 
@@ -204,14 +210,7 @@ class _HabitPageState extends State<HabitPage> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: ListTile(
-                      title: Text(
-                        habit.title,
-                        style: TextStyle(
-                          decoration: habit.done
-                              ? TextDecoration.lineThrough
-                              : null,
-                        ),
-                      ),
+                      
                       trailing: Icon(
                         habit.done
                             ? Icons.check_circle
