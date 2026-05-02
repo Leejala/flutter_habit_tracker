@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
-  runApp(const habittracker());
+  runApp(const HabitTracker());
 }
 
-class habittracker extends StatelessWidget {
-  const habittracker({super.key});
-
+class HabitTracker extends StatelessWidget {
+  const HabitTracker({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,22 +45,17 @@ class Habit {
 class HabitPage extends StatefulWidget {
   const HabitPage({super.key});
 
-
   @override
   State<HabitPage> createState() => _HabitPageState();
 }
 
-
 class _HabitPageState extends State<HabitPage> {
   List<Habit> habits = [];
-  List<bool> isDoneList = [];
   final TextEditingController controller = TextEditingController();
 
   @override
   void initState() {
     super.initState();
-    isDoneList = List.generate(habits.length, (index) => false);
-
     loadHabits();
   }
 
@@ -86,10 +80,10 @@ class _HabitPageState extends State<HabitPage> {
   }
 
   void addHabit() {
-    if (controller.text.isEmpty) return;
+    if (controller.text.trim().isEmpty) return;
 
     setState(() {
-      habits.add(Habit(title: controller.text));
+      habits.add(Habit(title: controller.text.trim()));
       controller.clear();
     });
 
@@ -99,6 +93,14 @@ class _HabitPageState extends State<HabitPage> {
   void toggleHabit(int index) {
     setState(() {
       habits[index].done = !habits[index].done;
+    });
+
+    saveHabits();
+  }
+
+  void deleteHabit(int index) {
+    setState(() {
+      habits.removeAt(index);
     });
 
     saveHabits();
@@ -210,16 +212,34 @@ class _HabitPageState extends State<HabitPage> {
                       borderRadius: BorderRadius.circular(12),
                     ),
                     child: ListTile(
-                      
-                      trailing: Icon(
-                        habit.done
-                            ? Icons.check_circle
-                            : Icons.circle_outlined,
-                        color: habit.done
-                            ? Colors.purple
-                            : Colors.grey,
+                      title: Text(
+                        habit.title,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          decoration: habit.done
+                              ? TextDecoration.lineThrough
+                              : null,
+                          color: habit.done
+                              ? Colors.grey
+                              : Colors.black,
+                        ),
                       ),
-                      onTap: () => toggleHabit(index),
+                      leading: IconButton(
+                        icon: Icon(
+                          habit.done
+                              ? Icons.check_circle
+                              : Icons.circle_outlined,
+                          color: habit.done
+                              ? Colors.purple
+                              : Colors.grey,
+                        ),
+                        onPressed: () => toggleHabit(index),
+                      ),
+                      trailing: IconButton(
+                        icon: const Icon(Icons.delete, color: Colors.red),
+                        onPressed: () => deleteHabit(index),
+                      ),
                     ),
                   );
                 },
